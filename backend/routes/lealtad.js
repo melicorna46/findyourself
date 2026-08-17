@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const LEALTAD_URL = 'http://localhost:4003';
+const LEALTAD_URL = process.env.LEALTAD_URL || 'http://localhost:4003';
 
 // GET saldo de puntos de un usuario
 // Se consulta: GET /lealtad/saldo/14
