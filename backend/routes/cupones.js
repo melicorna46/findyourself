@@ -2,7 +2,7 @@
 const router = express.Router();
 const axios = require('axios');
 
-const CUPONES_URL = 'http://localhost:4004';
+const CUPONES_URL = process.env.CUPONES_URL || 'http://localhost:4004';
 
 router.post('/validar', async (req, res) => {
   try {

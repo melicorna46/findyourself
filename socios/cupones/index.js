@@ -107,7 +107,7 @@ app.post('/aplicar', async (req, res) => {
   }
 });
 
-const PORT = 4004;
+const PORT = process.env.PORT || 4004;
 app.listen(PORT, () => {
   console.log(`API Cupones corriendo en http://localhost:${PORT}`);
 });
