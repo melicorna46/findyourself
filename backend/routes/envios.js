@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios'); // para llamar al courier (API a API)
 
 // URL del socio courier (empresa externa, puerto 4001)
-const COURIER_URL = 'http://localhost:4001';
+const COURIER_URL = process.env.COURIER_URL || 'http://localhost:4001';
 
 // ─────────────────────────────────────────────
 // GET costo de envío según provincia
