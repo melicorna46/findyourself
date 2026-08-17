@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'http://10.0.2.2:3000';
+  static const String baseUrl = 'https://findyourself-backend.onrender.com';
 
   // Arma la URL completa de una imagen usando SIEMPRE el baseUrl actual.
   // Sirve tanto si en la base viene la ruta relativa (/imagenes/x.jpg)

@@ -68,7 +68,7 @@ app.post('/envio', async (req, res) => {
 // ─────────────────────────────────────────────
 // Levantar el servidor en el puerto 4001
 // ─────────────────────────────────────────────
-const PORT = 4001;
+const PORT = process.env.PORT || 4001;
 app.listen(PORT, () => {
   console.log(`API Courier corriendo en http://localhost:${PORT}`);
 });
