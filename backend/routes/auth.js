@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken'); // para generar tokens de sesion
 const speakeasy = require('speakeasy'); // para generar el OTP de Google Authenticator
 const { enviarCodigoVerificacion } = require('../email'); // para enviar correos reales
 const axios = require('axios'); // para llamar al TSE (API a API)
-const TSE_URL = 'http://localhost:5001'; // URL de la institucion TSE (externa)
+const TSE_URL = process.env.TSE_URL || 'http://localhost:5001'; // URL de la institucion TSE (externa)
 
 // Clave secreta para firmar los tokens JWT
 const JWT_SECRET = 'findyourself_secret_2025';
