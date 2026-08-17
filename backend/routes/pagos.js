@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const BANCO_URL = 'http://localhost:5002';
+const BANCO_URL = process.env.BANCO_URL || 'http://localhost:5002';
 
 // POST pago con tarjeta
 // Flutter llama: POST /pagos/tarjeta

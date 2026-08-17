@@ -171,7 +171,7 @@ app.post('/pago-sinpe', async (req, res) => {
 
 
 
-const PORT = 5002;
+const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => {
   console.log(`API Banco corriendo en http://localhost:${PORT}`);
 });
