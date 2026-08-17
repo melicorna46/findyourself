@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios'); // para llamar al proveedor (API a API)
 
 // URL del socio proveedor (empresa externa, puerto 4002)
-const PROVEEDOR_URL = 'http://localhost:4002';
+const PROVEEDOR_URL = process.env.PROVEEDOR_URL || 'http://localhost:4002';
 
 // ─────────────────────────────────────────────
 // GET disponibilidad de materiales para reponer un producto
