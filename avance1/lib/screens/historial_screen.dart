@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/historial_service.dart';
+import '../services/api_services.dart';
 
 class HistorialScreen extends StatefulWidget {
   const HistorialScreen({super.key});
@@ -131,7 +132,7 @@ class _HistorialScreenState extends State<HistorialScreen> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: Image.network(
-                              item['imagen_url'] ?? '',
+                              ApiService.urlImagen(item['imagen_url']),
                               width: 44, height: 44, fit: BoxFit.cover,
                               errorBuilder: (_, __, ___) => Container(
                                 width: 44, height: 44,

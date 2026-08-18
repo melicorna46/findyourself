@@ -22,7 +22,7 @@ class _InicioDecisionState extends State<InicioDecision> {
 
   Future<void> _decidir() async {
     final prefs = await SharedPreferences.getInstance();
-    final yaVioOnboarding = false; // TEMPORAL: siempre muestra onboarding para pruebas
+    final yaVioOnboarding = prefs.getBool('onboarding_visto') ?? false;
 
     if (!mounted) return;
     Navigator.pushReplacement(
