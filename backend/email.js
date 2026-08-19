@@ -1,16 +1,12 @@
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'pmisvo@gmail.com',
-    pass: 'rnon hoce ulrm mfvd',
-  },
-});
+// La API key se lee de la variable de entorno RESEND_API_KEY (se configura en Render).
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 async function enviarCodigoVerificacion(correoDestino, codigo) {
-  await transporter.sendMail({
-    from: '"Find Your Self" <pmisvo@gmail.com>',
+  await resend.emails.send({
+    // Remitente: en el plan gratis sin dominio propio, se usa el de prueba de Resend.
+    from: 'Find Your Self <onboarding@resend.dev>',
     to: correoDestino,
     subject: 'Codigo de verificacion - Find Your Self',
     html: `
