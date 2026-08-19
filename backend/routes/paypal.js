@@ -19,6 +19,9 @@ function obtenerIPLocal() {
 }
 const IP_LOCAL = obtenerIPLocal();
 
+// URL publica del backend cuando esta hosteado (Render). En local usa la IP.
+const BASE_URL = process.env.PUBLIC_URL || `http://${IP_LOCAL}:3000`;
+
 // ─────────────────────────────────────────────
 // Credenciales de PayPal (Sandbox)
 // ─────────────────────────────────────────────
@@ -54,8 +57,8 @@ router.post('/crear-orden', async (req, res) => {
       }],
       application_context: {
         brand_name: 'Find Your Self',
-        return_url: `http://${IP_LOCAL}:3000/paypal/exito`,
-        cancel_url: `http://${IP_LOCAL}:3000/paypal/cancelado`,
+        return_url: `${BASE_URL}/paypal/exito`,
+        cancel_url: `${BASE_URL}/paypal/cancelado`,
       },
     });
 
