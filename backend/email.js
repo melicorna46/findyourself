@@ -79,4 +79,4 @@ async function enviarCodigoVerificacion(correoDestino, codigo) {
   }
 }
 
-module.exports = { enviarCodigoVerificacion };
+module.exports = { enviarCodigoVerificacion };d
