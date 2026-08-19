@@ -1,12 +1,36 @@
-const { Resend } = require('resend');
+const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
 
-// La API key se lee de la variable de entorno RESEND_API_KEY (se configura en Render).
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Credenciales de Google (se leen de variables de entorno en Render).
+const CLIENT_ID = process.env.GMAIL_CLIENT_ID;
+const CLIENT_SECRET = process.env.GMAIL_CLIENT_SECRET;
+const REFRESH_TOKEN = process.env.GMAIL_REFRESH_TOKEN;
+const EMAIL_USER = process.env.EMAIL_USER; // el correo que envia (ej. pmisvo@gmail.com)
+
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+
+const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 async function enviarCodigoVerificacion(correoDestino, codigo) {
-  await resend.emails.send({
-    // Remitente: en el plan gratis sin dominio propio, se usa el de prueba de Resend.
-    from: 'Find Your Self <onboarding@resend.dev>',
+  // Genera un token de acceso fresco usando el refresh token
+  const accessToken = await oAuth2Client.getAccessToken();
+
+  // Envia por la Gmail API (HTTPS) usando Nodemailer con OAuth2
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      type: 'OAuth2',
+      user: EMAIL_USER,
+      clientId: CLIENT_ID,
+      clientSecret: CLIENT_SECRET,
+      refreshToken: REFRESH_TOKEN,
+      accessToken: accessToken.token,
+    },
+  });
+
+  await transporter.sendMail({
+    from: `Find Your Self <${EMAIL_USER}>`,
     to: correoDestino,
     subject: 'Codigo de verificacion - Find Your Self',
     html: `
