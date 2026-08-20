@@ -6,7 +6,7 @@
     </intent>
 </queries>
     <application
-        android:label="avance1"
+        android:label="Find Your Self"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

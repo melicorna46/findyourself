@@ -1,11 +1,11 @@
 {
-    "name": "avance1",
-    "short_name": "avance1",
+    "name": "Find Your Self",
+    "short_name": "Find Your Self",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#8a6840",
+    "theme_color": "#8a6840",
+    "description": "Joyeria artesanal unica - Find Your Self",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
